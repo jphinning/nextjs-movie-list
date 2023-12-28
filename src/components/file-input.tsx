@@ -14,10 +14,10 @@ export const FileInput = () => (
                  hover:border-gray-400
                  focus:outline-none"
     >
-      <p className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <FiDownload />
         <p>Drop an image here</p>
-      </p>
+      </div>
       <input type="file" name="file_upload" className="hidden" />
     </label>
   </div>

@@ -1,20 +1,28 @@
 'use client';
 
-import { FormInputField } from '@/components/form-input-field';
-import { ButtonType, FormButton } from '@/components/form-button';
 import { FileInput } from '@/components/file-input';
-import { useFormState } from 'react-dom';
-import { createMovie } from '@/lib/actions';
+import { ButtonType, FormButton } from '@/components/form-button';
+import { FormInputField } from '@/components/form-input-field';
+import { updateMovie } from '@/lib/actions';
+import { Movie } from '@prisma/client';
 import Link from 'next/link';
+import { useFormState } from 'react-dom';
 
-export default function CreateMovies() {
+interface EditMovieFormProps {
+  movie: Movie;
+}
+
+export const EditMovieForm = ({ movie }: EditMovieFormProps) => {
   const initialState = { message: '', errors: {} };
-  const [state, dispatch] = useFormState(createMovie, initialState);
+
+  const updateMovieWithId = updateMovie.bind(null, movie.id);
+
+  const [state, dispatch] = useFormState(updateMovieWithId, initialState);
 
   return (
-    <main className="w-screen h-screen prose px-12 py-11">
+    <>
       <div className="mb-12">
-        <h2>Create a new movie</h2>
+        <h2>Edit</h2>
       </div>
 
       <form action={dispatch} className="flex gap-13 h-[60%] w-[80%]">
@@ -24,8 +32,8 @@ export default function CreateMovies() {
 
         <div className="flex flex-col gap-4 w-[70%]">
           <FormInputField
-            name="title"
             placeholder="Title"
+            name="title"
             error={!!state.errors?.title}
           />
           <div>
@@ -38,8 +46,8 @@ export default function CreateMovies() {
           </div>
           <FormInputField
             placeholder="Publishing year"
-            name="published"
             width="w-[70%]"
+            name="published"
             error={!!state.errors?.published}
           />
           <div>
@@ -50,7 +58,6 @@ export default function CreateMovies() {
                 </p>
               ))}
           </div>
-
           <div className="flex gap-5 justify-between mt-10">
             <Link href="/movies" className="w-full">
               <FormButton buttonStyle={ButtonType.ghost}>Cancel</FormButton>
@@ -59,6 +66,6 @@ export default function CreateMovies() {
           </div>
         </div>
       </form>
-    </main>
+    </>
   );
-}
+};
