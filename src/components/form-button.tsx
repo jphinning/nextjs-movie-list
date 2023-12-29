@@ -24,14 +24,14 @@ export const FormButton = ({
 }: ComponentProps) =>
   buttonStyle === ButtonType.main ? (
     <button
-      className="bg-primary rounded-lg p-4 w-full  hover:bg-white/20 transition"
+      className="bg-primary rounded-lg p-4 w-full  hover:bg-white/20 transition disabled:bg-white/20"
       {...buttonProps}
     >
       <b>{children}</b>
     </button>
   ) : (
     <button
-      className="border-2 border-white bg-transparent rounded-lg p-4 w-full hover:bg-white/20 transition"
+      className="border-2 border-white bg-transparent rounded-lg p-4 w-full hover:bg-white/20 transition disabled:bg-white/20"
       {...buttonProps}
     >
       <b>{children}</b>

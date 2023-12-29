@@ -6,6 +6,7 @@ import { FileInput } from '@/components/file-input';
 import { useFormState } from 'react-dom';
 import { createMovie } from '@/lib/actions';
 import Link from 'next/link';
+import { SubmitButton } from '@/components/submit-button';
 
 export default function CreateMovies() {
   const initialState = { message: '', errors: {} };
@@ -26,6 +27,7 @@ export default function CreateMovies() {
           <FormInputField
             name="title"
             placeholder="Title"
+            required
             error={!!state.errors?.title}
           />
           <div>
@@ -39,6 +41,7 @@ export default function CreateMovies() {
           <FormInputField
             placeholder="Publishing year"
             name="published"
+            required
             width="w-[70%]"
             error={!!state.errors?.published}
           />
@@ -55,7 +58,7 @@ export default function CreateMovies() {
             <Link href="/movies" className="w-full">
               <FormButton buttonStyle={ButtonType.ghost}>Cancel</FormButton>
             </Link>
-            <FormButton type="submit">Submit</FormButton>
+            <SubmitButton>Submit</SubmitButton>
           </div>
         </div>
       </form>

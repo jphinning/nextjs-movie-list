@@ -3,6 +3,7 @@
 import { FileInput } from '@/components/file-input';
 import { ButtonType, FormButton } from '@/components/form-button';
 import { FormInputField } from '@/components/form-input-field';
+import { SubmitButton } from '@/components/submit-button';
 import { updateMovie } from '@/lib/actions';
 import { Movie } from '@prisma/client';
 import Link from 'next/link';
@@ -27,13 +28,15 @@ export const EditMovieForm = ({ movie }: EditMovieFormProps) => {
 
       <form action={dispatch} className="flex gap-13 h-[60%] w-[80%]">
         <div className="w-full h-full">
-          <FileInput />
+          <FileInput currentImage={movie.image} />
         </div>
 
         <div className="flex flex-col gap-4 w-[70%]">
           <FormInputField
             placeholder="Title"
+            required
             name="title"
+            defaultValue={movie?.title}
             error={!!state.errors?.title}
           />
           <div>
@@ -48,6 +51,8 @@ export const EditMovieForm = ({ movie }: EditMovieFormProps) => {
             placeholder="Publishing year"
             width="w-[70%]"
             name="published"
+            required
+            defaultValue={movie?.published.getFullYear()}
             error={!!state.errors?.published}
           />
           <div>
@@ -62,7 +67,7 @@ export const EditMovieForm = ({ movie }: EditMovieFormProps) => {
             <Link href="/movies" className="w-full">
               <FormButton buttonStyle={ButtonType.ghost}>Cancel</FormButton>
             </Link>
-            <FormButton type="submit">Submit</FormButton>
+            <SubmitButton>Submit</SubmitButton>
           </div>
         </div>
       </form>

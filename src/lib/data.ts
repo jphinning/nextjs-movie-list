@@ -1,14 +1,20 @@
 import prisma from '@/lib/prisma';
 
-export async function fetchMovies() {
+export const MOVIES_PER_PAGE = 8;
+
+export async function fetchMovies(page: number) {
   try {
-    const movies = prisma.movie.findMany({
+    const movies = await prisma.movie.findMany({
       orderBy: {
         updatedAt: 'desc',
       },
+      skip: (page - 1) * MOVIES_PER_PAGE,
+      take: MOVIES_PER_PAGE,
     });
 
-    return movies;
+    const total = await prisma.movie.count();
+
+    return { movies, total };
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch');
