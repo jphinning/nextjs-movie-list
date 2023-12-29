@@ -46,7 +46,7 @@ export default async function Movies({
           <Link
             key={movie.id}
             href={`movies/${movie.id}/edit`}
-            className="no-underline w-fit"
+            className="no-underline w-fit h-fit"
           >
             <MovieCard
               title={movie.title}

@@ -16,11 +16,11 @@ export default function SignIn() {
   return (
     <main className="flex flex-col justify-center items-center w-screen h-full p-13 prose">
       <div className="w-fit">
-        <h1>{'Sign In'}</h1>
+        <h1>{'Sign in'}</h1>
       </div>
       <form
         action={dispatch}
-        className="flex flex-col gap-5 w-[30%] min-w-[348px]"
+        className="flex flex-col gap-6 w-[30%] min-w-[348px]"
       >
         <FormInputField placeholder="Email" name="email" />
         <FormInputField
@@ -28,11 +28,11 @@ export default function SignIn() {
           placeholder="Password"
           name="password"
         />
-        <div>
-          {errorMessage && <p className="text-error">{errorMessage}</p>}
-        </div>
         <div className="flex justify-center items-center">
           <CheckboxInputField text="Remember me" />
+        </div>
+        <div>
+          {errorMessage && <p className="text-error">{errorMessage}</p>}
         </div>
         <SubmitButton>{'Login'}</SubmitButton>
         <FormButton

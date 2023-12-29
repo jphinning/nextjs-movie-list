@@ -17,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${font.className} bg-bg`}>
+      <body
+        className={`${font.className} bg-bg bg-[url('../../public/bg_img.svg')] bg-no-repeat bg-bottom h-screen bg-fixed bg-[length:100%]`}
+      >
         <Toaster />
         {children}
       </body>

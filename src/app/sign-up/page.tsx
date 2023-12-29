@@ -16,11 +16,11 @@ export default function SignUp() {
   return (
     <main className="flex flex-col justify-center items-center w-screen h-full p-13 prose">
       <div className="w-fit">
-        <h1>{'Sign Up'}</h1>
+        <h1>{'Sign up'}</h1>
       </div>
       <form
         action={dispatch}
-        className="flex flex-col gap-5 w-[30%] min-w-[348px]"
+        className="flex flex-col gap-6 w-[30%] min-w-[348px]"
       >
         <FormInputField placeholder="Email" name="email" />
         <FormInputField
