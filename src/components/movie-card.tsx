@@ -15,6 +15,6 @@ export const MovieCard = ({ title, publishDate, imgUrl }: MovieCardProps) => (
       height={400}
     />
     <b>{title}</b>
-    <p>{publishDate.getFullYear()}</p>
+    <p>{publishDate.getUTCFullYear()}</p>
   </div>
 );

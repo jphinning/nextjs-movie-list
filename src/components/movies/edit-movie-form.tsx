@@ -52,7 +52,7 @@ export const EditMovieForm = ({ movie }: EditMovieFormProps) => {
             width="w-[70%]"
             name="published"
             required
-            defaultValue={movie?.published.getFullYear()}
+            defaultValue={movie?.published.getUTCFullYear()}
             error={!!state.errors?.published}
           />
           <div>
